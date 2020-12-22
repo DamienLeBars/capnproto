@@ -33,13 +33,13 @@
 #include <errno.h>
 #endif
 
-#if !_WIN32 || __MINGW32__
+#if !_WIN32 || __CYGWIN__ || __MINGW32__
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #endif
 
-#if !_WIN32
+#if !_WIN32 || __CYGWIN__
 #include <sys/uio.h>
 #endif
 
@@ -51,7 +51,7 @@ KJ_BEGIN_HEADER
 namespace kj {
 namespace miniposix {
 
-#if (_WIN32 || __CYGWIN__) && !__MINGW32__
+#if (_WIN32 || __MINGW32__ || __CYGWIN__)
 // We're on Windows and not MinGW. So, we need to define wrappers for the POSIX API.
 
 typedef int ssize_t;
