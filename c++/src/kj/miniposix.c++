@@ -25,12 +25,18 @@ namespace kj {
 namespace miniposix {
 #if defined(IOV_MAX)
   #pragma message("c++ IOV_MAX defined")
+#else
+  #pragma message("c++ IOV_MAX NOT defined")
 #endif
 #if defined(UIO_MAX_IOV)
   #pragma message("c++ UIO_MAX_IOV defined")
+#else
+  #pragma message("c++ UIO_MAX_IOV NOT defined")
 #endif
 #if _WIN32
   #pragma message("c++ _WIN32 defined")
+#else
+  #pragma message("c++ _WIN32 NOT defined")
 #endif
 
 #if !_WIN32 && !defined(IOV_MAX) && !defined(UIO_MAX_IOV)
