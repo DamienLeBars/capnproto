@@ -22,8 +22,10 @@
 #ifdef TOTO_TOTO
   #undef TOTO_TOTO
 #endif
-#include "miniposix.h"
 
+#define TITI_TITI
+#include "miniposix.h"
+#undef TITI_TITI
 #if _WIN32
 #include <io.h>
 #include <direct.h>
