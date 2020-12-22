@@ -105,7 +105,21 @@ using ::write;
 using ::close;
 
 #endif
-
+#if defined(IOV_MAX)
+  #pragma message("h IOV_MAX defined")
+#else
+  #pragma message("h IOV_MAX NOT defined")
+#endif
+#if defined(UIO_MAX_IOV)
+  #pragma message("h UIO_MAX_IOV defined")
+#else
+  #pragma message("h UIO_MAX_IOV NOT defined")
+#endif
+#if _WIN32
+  #pragma message("h _WIN32 defined")
+#else
+  #pragma message("h _WIN32 NOT defined")
+#endif
 #if _WIN32
 // We're on Windows, including MinGW. pipe() and mkdir() are non-standard even on MinGW.
 
