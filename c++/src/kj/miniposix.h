@@ -24,7 +24,7 @@
 // This header provides a small subset of the POSIX API which also happens to be available on
 // Windows under slightly-different names.
 
-#if _WIN32
+#if _WIN32 || __CYGWIN__
 #include <io.h>
 #include <direct.h>
 #include <fcntl.h>  // _O_BINARY
@@ -33,13 +33,13 @@
 #include <errno.h>
 #endif
 
-#if !_WIN32 || __MINGW32__
+#if !(_WIN32 || __CYGWIN__) || __MINGW32__
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #endif
 
-#if !_WIN32
+#if !(_WIN32 || __CYGWIN__)
 #include <sys/uio.h>
 #endif
 
@@ -51,7 +51,7 @@ KJ_BEGIN_HEADER
 namespace kj {
 namespace miniposix {
 
-#if _WIN32 && !__MINGW32__
+#if (_WIN32 || __CYGWIN__) && !__MINGW32__
 // We're on Windows and not MinGW. So, we need to define wrappers for the POSIX API.
 
 typedef int ssize_t;
@@ -97,7 +97,7 @@ using ::close;
 
 #endif
 
-#if _WIN32
+#if (_WIN32 || __CYGWIN__)
 // We're on Windows, including MinGW. pipe() and mkdir() are non-standard even on MinGW.
 
 inline int pipe(int fds[2]) {
