@@ -113,7 +113,18 @@ inline int mkdir(const char* path, int mode) {
 
 using ::pipe;
 using ::mkdir;
-
+#ifndef TOTO_TOTO
+  #define TOTO_TOTO
+  #if defined(IOV_MAX)
+    #pragma message("h IOV_MAX defined")
+  #endif
+  #if defined(UIO_MAX_IOV)
+    #pragma message("h UIO_MAX_IOV defined")
+  #endif
+  #if _WIN32
+    #pragma message("h _WIN32 defined")
+  #endif
+#endif
 
 // Apparently, there is a maximum number of iovecs allowed per call.  I don't understand why.
 // Most platforms define IOV_MAX but Linux defines only UIO_MAXIOV and others, like Hurd,
