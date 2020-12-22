@@ -264,6 +264,7 @@ libkj_la_SOURCES=                                              \
   src/kj/memory.c++                                            \
   src/kj/refcount.c++                                          \
   src/kj/array.c++                                             \
+  src/kj/miniposix.c++                                         \
   src/kj/string.c++                                            \
   src/kj/string-tree.c++                                       \
   src/kj/hash.c++                                              \
@@ -277,7 +278,7 @@ libkj_la_SOURCES=                                              \
   src/kj/thread.c++                                            \
   src/kj/time.c++                                              \
   src/kj/filesystem.c++                                        \
-  src/kj/filesystem-disk-unix.c++                                   \
+  src/kj/filesystem-disk-unix.c++                              \
   src/kj/filesystem-disk-win32.c++                             \
   src/kj/test-helpers.c++                                      \
   src/kj/main.c++                                              \
