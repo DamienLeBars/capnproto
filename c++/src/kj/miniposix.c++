@@ -19,6 +19,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#ifdef TOTO_TOTO
+  #undef TOTO_TOTO
+#endif
 #include "miniposix.h"
 
 namespace kj {
