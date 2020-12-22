@@ -40,6 +40,7 @@
 #endif
 
 #if !_WIN32
+#include <limits.h>
 #include <sys/uio.h>
 #endif
 
