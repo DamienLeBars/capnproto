@@ -18,9 +18,17 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
+#ifdef TITI_TITI
+#pragma message("h TITI_TITI defined")
+#else
+#pragma message("h before once miniposix")
+#endif
 #pragma once
-
+#ifdef TITI_TITI
+#pragma message("h after once TITI_TITI defined")
+#else
+#pragma message("h after once miniposix")
+#endif
 // This header provides a small subset of the POSIX API which also happens to be available on
 // Windows under slightly-different names.
 
@@ -110,7 +118,7 @@ inline int mkdir(const char* path, int mode) {
 
 #else
 // We're on real POSIX.
-
+#pragma message("h real POSIX")
 using ::pipe;
 using ::mkdir;
 #ifndef TOTO_TOTO
