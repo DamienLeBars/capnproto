@@ -23,7 +23,7 @@
 
 namespace kj {
 namespace miniposix {
-#if !defined(_WIN32) && !defined(IOV_MAX) && !defined(UIO_MAX_IOV)
+#if !(_WIN32 || __CYGWIN__) && !defined(IOV_MAX) && !defined(UIO_MAX_IOV)
 size_t iovMax() {
   // Thread-safe & lazily initialized only on first use.
   static const size_t KJ_IOV_MAX = [] () -> size_t {
