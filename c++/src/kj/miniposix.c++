@@ -24,6 +24,29 @@
 #endif
 #include "miniposix.h"
 
+#if _WIN32
+#include <io.h>
+#include <direct.h>
+#include <fcntl.h>  // _O_BINARY
+#else
+#include <limits.h>
+#include <errno.h>
+#endif
+
+#if !_WIN32 || __MINGW32__
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#endif
+
+#if !_WIN32
+#include <limits.h>
+#include <sys/uio.h>
+#endif
+
+// To get KJ_BEGIN_HEADER/KJ_END_HEADER
+#include "common.h"
+
 namespace kj {
 namespace miniposix {
 #if defined(IOV_MAX)
