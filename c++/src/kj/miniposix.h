@@ -24,7 +24,7 @@
 // This header provides a small subset of the POSIX API which also happens to be available on
 // Windows under slightly-different names.
 
-#if _WIN32 || __CYGWIN__
+#if _WIN32
 #include <io.h>
 #include <direct.h>
 #include <fcntl.h>  // _O_BINARY
@@ -33,13 +33,13 @@
 #include <errno.h>
 #endif
 
-#if !(_WIN32 || __CYGWIN__) || __MINGW32__
+#if !_WIN32 || __MINGW32__
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #endif
 
-#if !(_WIN32 || __CYGWIN__)
+#if !_WIN32
 #include <sys/uio.h>
 #endif
 
